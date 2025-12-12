@@ -2,8 +2,11 @@ import { Link } from 'react-router-dom'
 // import { properties } from '../data/properties'
 // import { experiences } from '../data/experiences'
 // import { stories } from '../data/stories'
-import landingVideo from '../assets/landing/231018_GRD_BURN_MANIFESTO.mp4'
-import logoWhite from '../assets/logo/logo white.png'
+import { getR2Url } from '../config/r2-assets'
+
+// Get R2 URLs
+const landingVideo = getR2Url('landing/231018_GRD_BURN_MANIFESTO.mp4')
+const logoWhite = getR2Url('logo/logo white.png')
 
 function Home() {
   return (

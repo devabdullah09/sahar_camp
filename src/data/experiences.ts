@@ -1,29 +1,31 @@
 import { Experience } from '../types'
+import { getR2Url } from '../config/r2-assets'
 
+// Get R2 URLs for all assets
 // Nevada 2023 Images
-import nevada23Thumb from '../assets/OUR EXPERIENCES/1. Nevada, USA/Pictures/Selection/088A2970.jpg'
-import nevada23Img1 from '../assets/OUR EXPERIENCES/1. Nevada, USA/Pictures/Selection/088A2470.jpg'
-import nevada23Img2 from '../assets/OUR EXPERIENCES/1. Nevada, USA/Pictures/Selection/088A2490.jpg'
-import nevada23Img3 from '../assets/OUR EXPERIENCES/1. Nevada, USA/Pictures/Selection/DSC03227.jpg'
-import nevada23Img4 from '../assets/OUR EXPERIENCES/1. Nevada, USA/Pictures/Selection/WhatsApp Image 2023-09-30 at 10.24.12 PM.jpeg'
-import nevada23Bottom from '../assets/OUR EXPERIENCES/1. Nevada, USA/Pictures/Selection/bottom.jpg'
-import nevada23Video from '../assets/OUR EXPERIENCES/1. Nevada, USA/Sahar video.mp4'
+const nevada23Thumb = getR2Url('OUR EXPERIENCES/1. Nevada, USA/Pictures/Selection/088A2970.jpg')
+const nevada23Img1 = getR2Url('OUR EXPERIENCES/1. Nevada, USA/Pictures/Selection/088A2470.jpg')
+const nevada23Img2 = getR2Url('OUR EXPERIENCES/1. Nevada, USA/Pictures/Selection/088A2490.jpg')
+const nevada23Img3 = getR2Url('OUR EXPERIENCES/1. Nevada, USA/Pictures/Selection/DSC03227.jpg')
+const nevada23Img4 = getR2Url('OUR EXPERIENCES/1. Nevada, USA/Pictures/Selection/WhatsApp Image 2023-09-30 at 10.24.12 PM.jpeg')
+const nevada23Bottom = getR2Url('OUR EXPERIENCES/1. Nevada, USA/Pictures/Selection/bottom.jpg')
+const nevada23Video = getR2Url('OUR EXPERIENCES/1. Nevada, USA/Sahar video.mp4')
 
 // Ethos Mexico Images
-import mexicoThumb from '../assets/OUR EXPERIENCES/2. Ethos, Mexico/Pictures/f5d74a18-260f-40b8-8336-029fba6642e0.jpg'
-import mexicoImg1 from '../assets/OUR EXPERIENCES/2. Ethos, Mexico/Pictures/0fcee42d-eda1-4b4d-8f39-ebbace7b7f1f.jpg'
-import mexicoImg2 from '../assets/OUR EXPERIENCES/2. Ethos, Mexico/Pictures/33c8af0f-4363-436a-b727-0e95a7ed607f.jpg'
-import mexicoImg3 from '../assets/OUR EXPERIENCES/2. Ethos, Mexico/Pictures/5a54e104-1c1d-421b-a319-4ac5d0ee2656.jpg'
-import mexicoImg4 from '../assets/OUR EXPERIENCES/2. Ethos, Mexico/Pictures/f5d74a18-260f-40b8-8336-029fba6642e0.jpg'
-import mexicoBottom from '../assets/OUR EXPERIENCES/2. Ethos, Mexico/Pictures/bottom.jpg'
+const mexicoThumb = getR2Url('OUR EXPERIENCES/2. Ethos, Mexico/Pictures/f5d74a18-260f-40b8-8336-029fba6642e0.jpg')
+const mexicoImg1 = getR2Url('OUR EXPERIENCES/2. Ethos, Mexico/Pictures/0fcee42d-eda1-4b4d-8f39-ebbace7b7f1f.jpg')
+const mexicoImg2 = getR2Url('OUR EXPERIENCES/2. Ethos, Mexico/Pictures/33c8af0f-4363-436a-b727-0e95a7ed607f.jpg')
+const mexicoImg3 = getR2Url('OUR EXPERIENCES/2. Ethos, Mexico/Pictures/5a54e104-1c1d-421b-a319-4ac5d0ee2656.jpg')
+const mexicoImg4 = getR2Url('OUR EXPERIENCES/2. Ethos, Mexico/Pictures/f5d74a18-260f-40b8-8336-029fba6642e0.jpg')
+const mexicoBottom = getR2Url('OUR EXPERIENCES/2. Ethos, Mexico/Pictures/bottom.jpg')
 
 // Nevada 2022 Images
-import nevada22Thumb from '../assets/OUR EXPERIENCES/6. Nevada, USA/Picture Sahar 22/DSC06355.jpg'
-import nevada22Img1 from '../assets/OUR EXPERIENCES/6. Nevada, USA/Picture Sahar 22/DSC06055.jpg'
-import nevada22Img2 from '../assets/OUR EXPERIENCES/6. Nevada, USA/Picture Sahar 22/DSC06093.jpg'
-import nevada22Img3 from '../assets/OUR EXPERIENCES/6. Nevada, USA/Picture Sahar 22/DSC06131.jpg'
-import nevada22Img4 from '../assets/OUR EXPERIENCES/6. Nevada, USA/Picture Sahar 22/DSC06203.jpg'
-import nevada22Bottom from '../assets/OUR EXPERIENCES/6. Nevada, USA/Picture Sahar 22/bottom.jpg'
+const nevada22Thumb = getR2Url('OUR EXPERIENCES/6. Nevada, USA/Picture Sahar 22/DSC06355.jpg')
+const nevada22Img1 = getR2Url('OUR EXPERIENCES/6. Nevada, USA/Picture Sahar 22/DSC06055.jpg')
+const nevada22Img2 = getR2Url('OUR EXPERIENCES/6. Nevada, USA/Picture Sahar 22/DSC06093.jpg')
+const nevada22Img3 = getR2Url('OUR EXPERIENCES/6. Nevada, USA/Picture Sahar 22/DSC06131.jpg')
+const nevada22Img4 = getR2Url('OUR EXPERIENCES/6. Nevada, USA/Picture Sahar 22/DSC06203.jpg')
+const nevada22Bottom = getR2Url('OUR EXPERIENCES/6. Nevada, USA/Picture Sahar 22/bottom.jpg')
 
 export const experiences: Experience[] = [
   {

@@ -1,8 +1,11 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { experiences } from '../data/experiences'
-import logoWhite from '../assets/logo/logo white.png'
-import logoDark from '../assets/logo/logo.png'
+import { getR2Url } from '../config/r2-assets'
+
+// Get R2 URLs for logos
+const logoWhite = getR2Url('logo/logo white.png')
+const logoDark = getR2Url('logo/logo.png')
 
 function ExperienceDetail() {
   const { slug } = useParams<{ slug: string }>()

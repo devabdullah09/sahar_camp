@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import logoWhite from '../assets/logo/logo white.png'
+import { getR2Url } from '../config/r2-assets'
+
+// Get R2 URL for logo
+const logoWhite = getR2Url('logo/logo white.png')
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
