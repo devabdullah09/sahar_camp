@@ -18,3 +18,17 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Ensure images and videos are responsive */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Improve touch targets on mobile */
+@media (max-width: 640px) {
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+

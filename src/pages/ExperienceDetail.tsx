@@ -40,19 +40,19 @@ function ExperienceDetail() {
     <div className="min-h-screen">
       {/* Header Bar */}
       <div className={`${headerBaseClasses} ${headerVariantClasses}`}>
-        <div className="w-full px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20 relative">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 relative">
             {/* Hamburger Menu - Left */}
             <button
               onClick={() => {
                 const event = new CustomEvent('toggleMenu')
                 window.dispatchEvent(event)
               }}
-              className={`${iconColor} hover:opacity-70 transition-colors z-10`}
+              className={`${iconColor} hover:opacity-70 transition-colors z-10 flex items-center justify-center`}
               aria-label="Toggle menu"
             >
               <svg
-                className="w-6 h-6 md:w-7 md:h-7"
+                className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -65,14 +65,14 @@ function ExperienceDetail() {
             </button>
 
             {/* Logo and Title - Centered */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-2 md:space-x-3">
+            <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-1.5 sm:space-x-2 md:space-x-3">
               <img
                 src={isHeaderSolid ? logoDark : logoWhite}
                 alt="Sahar Camp Logo"
-                className="h-7 md:h-9 w-auto transition-all duration-300"
+                className="h-6 sm:h-7 md:h-9 w-auto transition-all duration-300"
               />
               <h2
-                className={`text-lg md:text-2xl font-light uppercase tracking-[0.15em] md:tracking-[0.2em] whitespace-nowrap transition-colors duration-300 ${
+                className={`text-sm sm:text-lg md:text-2xl font-light uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] whitespace-nowrap transition-colors duration-300 ${
                   isHeaderSolid ? 'text-gray-900' : 'text-white'
                 }`}
               >
@@ -83,11 +83,11 @@ function ExperienceDetail() {
             {/* Back Button - Right */}
             <Link
               to="/experiences"
-              className={`${iconColor} hover:opacity-70 transition-colors z-10`}
+              className={`${iconColor} hover:opacity-70 transition-colors z-10 flex items-center justify-center`}
               aria-label="Back to experiences"
             >
               <svg
-                className="w-6 h-6 md:w-7 md:h-7"
+                className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -103,7 +103,7 @@ function ExperienceDetail() {
       </div>
 
       {/* Main Video or Hero Image */}
-      <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
+      <section className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
         {experience.video ? (
           <video autoPlay loop muted playsInline className="w-full h-full object-cover">
             <source src={experience.video} type="video/mp4" />
@@ -115,12 +115,12 @@ function ExperienceDetail() {
       </section>
 
       {/* Content Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-6 lg:px-12 max-w-6xl">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-6xl">
           {/* Centered Introduction */}
           {experience.fullDescription?.introParagraph && (
-            <div className="text-center mb-16 md:mb-20">
-              <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16 md:mb-20">
+              <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto px-2">
                 {experience.fullDescription.introParagraph}
               </p>
             </div>
@@ -138,7 +138,7 @@ function ExperienceDetail() {
               return (
                 <div
                   key={index}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-16 md:mb-20"
+                  className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center mb-12 sm:mb-16 md:mb-20"
                 >
                   {/* Image */}
                   <div className={`${isImageLeft ? 'order-1 md:order-1' : 'order-1 md:order-2'}`}>
@@ -152,13 +152,13 @@ function ExperienceDetail() {
                   </div>
 
                   {/* Text Content */}
-                  <div className={`${isImageLeft ? 'order-2 md:order-2' : 'order-2 md:order-1'}`}>
+                  <div className={`${isImageLeft ? 'order-2 md:order-2' : 'order-2 md:order-1'} px-2 sm:px-0`}>
                     {section.title && (
-                      <h3 className="text-xl md:text-2xl font-light text-gray-900 mb-4 uppercase tracking-[0.15em]">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-light text-gray-900 mb-3 sm:mb-4 uppercase tracking-[0.1em] sm:tracking-[0.15em]">
                         {section.title}
                       </h3>
                     )}
-                    <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                       {section.content}
                     </p>
                   </div>
@@ -168,7 +168,7 @@ function ExperienceDetail() {
 
           {/* Bottom Landscape Image */}
           {experience.bottomImage && (
-            <div className="mt-16">
+            <div className="mt-12 sm:mt-16">
               <img
                 src={experience.bottomImage}
                 alt={`${experience.title} gallery`}

@@ -20,25 +20,26 @@ function Home() {
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
+          style={{ minHeight: '100vh' }}
         >
           <source src={landingVideo} type="video/mp4" />
         </video>
 
         {/* Semi-transparent Header Bar */}
         <div className="absolute top-0 left-0 right-0 z-30 bg-white/5 backdrop-blur-md border-b border-white/10">
-          <div className="w-full px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16 md:h-20 relative">
+          <div className="w-full px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 relative">
               {/* Hamburger Menu - Left */}
               <button
                 onClick={() => {
                   const event = new CustomEvent('toggleMenu')
                   window.dispatchEvent(event)
                 }}
-                className="text-white hover:text-gray-200 transition-colors z-10"
+                className="text-white hover:text-gray-200 transition-colors z-10 flex items-center justify-center"
                 aria-label="Toggle menu"
               >
                 <svg
-                  className="w-6 h-6 md:w-7 md:h-7"
+                  className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -51,13 +52,13 @@ function Home() {
               </button>
 
               {/* Logo and Title - Centered */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-2 md:space-x-3">
+              <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-1.5 sm:space-x-2 md:space-x-3">
                 <img
                   src={logoWhite}
                   alt="Sahar Camp Logo"
-                  className="h-7 md:h-9 w-auto"
+                  className="h-6 sm:h-7 md:h-9 w-auto"
                 />
-                <h1 className="text-lg md:text-2xl font-light text-white uppercase tracking-[0.15em] md:tracking-[0.2em] whitespace-nowrap">
+                <h1 className="text-sm sm:text-lg md:text-2xl font-light text-white uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] whitespace-nowrap">
                   SAHAR CAMP
                 </h1>
               </div>
@@ -65,7 +66,7 @@ function Home() {
               {/* Join Us Button - Right */}
               <Link
                 to="/join"
-                className="px-5 md:px-7 py-2 md:py-2.5 bg-white text-gray-900 rounded-full hover:bg-gray-50 transition-all font-medium uppercase tracking-wider text-xs md:text-sm z-10"
+                className="px-3 sm:px-5 md:px-7 py-1.5 sm:py-2 md:py-2.5 bg-white text-gray-900 rounded-full hover:bg-gray-50 transition-all font-medium uppercase tracking-wider text-[11px] sm:text-xs md:text-sm z-10 flex items-center justify-center whitespace-nowrap"
               >
                 Join Us
               </Link>
