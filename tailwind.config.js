@@ -7,8 +7,13 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['DM Sans', '-apple-system', 'BlinkMacSystemFont', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
+        sans: ['Lato', '-apple-system', 'BlinkMacSystemFont', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+      },
+      colors: {
+        cream: '#F5F2ED',
+        'cream-dark': '#E8E4DD',
+        charcoal: '#1a1a1a',
       },
     },
   },

@@ -26,7 +26,7 @@ function Footer() {
   ]
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-charcoal text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12">
           {/* Our Homes */}
@@ -91,9 +91,9 @@ function Footer() {
             </div>
           </div>
 
-          {/* Our Habitas & Follow Us */}
+          {/* Sahar Camp & Follow Us */}
           <div>
-            <h3 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6">Our Habitas</h3>
+            <h3 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6">Sahar Camp</h3>
             <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
               <li>
                 <Link to="/contact" className="text-gray-300 hover:text-white text-xs sm:text-sm transition-colors">
@@ -192,7 +192,7 @@ function Footer() {
 
         {/* Copyright */}
         <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-800 text-center text-gray-400 text-xs sm:text-sm">
-          <p>&copy; {new Date().getFullYear()} Our Habitas. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Sahar Camp. All rights reserved.</p>
           <Link to="/privacy" className="hover:text-white transition-colors mt-2 inline-block">
             Privacy Policy
           </Link>
