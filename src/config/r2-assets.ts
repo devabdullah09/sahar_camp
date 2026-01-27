@@ -9,18 +9,19 @@
  * - The getR2Url() function will automatically use R2 URLs if available
  */
 
-// Check if we should use R2 URLs
-const USE_R2 = import.meta.env.VITE_USE_R2 === 'true'
-
 // Import the generated mapping (created after upload)
 // The r2-assets.json file exists (empty {} if not uploaded yet)
 // Vite handles JSON imports at build time
 import r2AssetsMapping from './r2-assets.json'
 
-// Use the mapping only if R2 is enabled
-const assetMapping: Record<string, string> = USE_R2 
-  ? (r2AssetsMapping as Record<string, string> || {})
-  : {}
+// Import local logo assets
+import logoImage from '../assets/logo.png'
+
+// Always use the mapping if available (regardless of USE_R2 setting)
+const assetMapping: Record<string, string> = (r2AssetsMapping as Record<string, string> || {})
+
+// Base R2 URL pattern
+const R2_BASE_URL = 'https://pub-0ced7f0e94b24d54a8ad2db4c5d26104.r2.dev/sahar-camp'
 
 /**
  * Get the R2 URL for a local asset path
@@ -31,20 +32,20 @@ export function getR2Url(localPath: string): string {
   // Normalize path separators
   const normalizedPath = localPath.replace(/\\/g, '/')
   
-  // If using R2 and we have a mapping entry, return R2 URL
-  if (USE_R2 && assetMapping[normalizedPath]) {
+  // If we have a mapping entry, use it (regardless of USE_R2 setting)
+  if (assetMapping[normalizedPath]) {
     return assetMapping[normalizedPath]
   }
   
-  // If R2 is enabled but mapping not found, log warning and return empty string
-  if (USE_R2) {
-    console.warn(`R2 URL not found for: ${normalizedPath}. Make sure you've uploaded assets.`)
-    return ''
-  }
-  
-  // If R2 is not enabled, return empty string (assets should be uploaded to R2)
-  console.warn(`R2 is not enabled. Set VITE_USE_R2=true in .env file.`)
-  return ''
+  // If no mapping found, construct URL from base pattern
+  // Encode each path segment to handle spaces and special characters properly
+  const pathSegments = normalizedPath.split('/')
+  const encodedSegments = pathSegments.map(segment => {
+    // Don't encode if it's already a valid URL segment, but encode spaces and special chars
+    return encodeURIComponent(segment)
+  })
+  const encodedPath = encodedSegments.join('/')
+  return `${R2_BASE_URL}/${encodedPath}`
 }
 
 /**
@@ -59,6 +60,27 @@ export function getExperienceImage(experiencePath: string): string {
  */
 export function getLogoPath(logoName: string): string {
   return getR2Url(`logo/${logoName}`)
+}
+
+/**
+ * Get the local logo image
+ */
+export function getSaharLogo(): string {
+  return logoImage
+}
+
+/**
+ * Get local logo for white backgrounds (using the same logo for now)
+ */
+export function getSaharLogoWhite(): string {
+  return logoImage
+}
+
+/**
+ * Get local logo for dark backgrounds (using the same logo for now)
+ */
+export function getSaharLogoDark(): string {
+  return logoImage
 }
 
 /**

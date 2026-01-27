@@ -19,10 +19,12 @@ function Offers() {
               Check back soon for our latest offers and special packages.
             </p>
             <a
-              href="/book"
+              href="https://unmarred-rail-a64.notion.site/2e91987a90a081e28006f2d146960e63"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors font-medium text-sm sm:text-base"
             >
-              Book Your Stay
+              Join Now
             </a>
           </div>
         </div>

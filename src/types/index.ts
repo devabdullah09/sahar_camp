@@ -20,7 +20,9 @@ export interface Experience {
   link?: string
   video?: string
   images?: string[]
+  galleryImages?: string[]
   bottomImage?: string
+  bottomVideo?: string
   fullDescription?: {
     subtitle?: string
     introParagraph?: string

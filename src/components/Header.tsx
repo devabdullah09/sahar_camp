@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { getR2Url } from '../config/r2-assets'
+import { getSaharLogoDark } from '../config/r2-assets'
 
-// Get R2 URL for logo
-const logoWhite = getR2Url('logo/logo white.png')
+// Get R2 URLs for logos - using new Sahar logos
+const logoDark = getSaharLogoDark()
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -20,9 +20,9 @@ function Header() {
 
   return (
     <>
-      {/* Side Navigation Menu */}
+      {/* Side Navigation Menu - White background with black text */}
       <div
-        className={`fixed top-0 left-0 h-full w-[85%] sm:w-[70%] md:w-[50%] lg:w-[40%] xl:w-[33.333%] max-w-[480px] bg-gray-700/90 backdrop-blur-md z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 h-full w-[85%] sm:w-[70%] md:w-[50%] lg:w-[40%] xl:w-[33.333%] max-w-[480px] bg-white border-r border-gray-200 shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -32,16 +32,16 @@ function Header() {
             {/* Logo */}
             <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center space-x-2 sm:space-x-3">
               <img
-                src={logoWhite}
+                src={logoDark}
                 alt="Sahar Camp Logo"
-                className="h-7 sm:h-8 md:h-10 w-auto"
+                className="h-16 sm:h-18 md:h-20 w-auto"
               />
             </Link>
 
             {/* Close Button */}
             <button
               onClick={() => setIsMenuOpen(false)}
-              className="text-white hover:text-gray-300 transition-colors flex items-center justify-center"
+              className="text-gray-900 hover:text-gray-600 transition-colors flex items-center justify-center"
               aria-label="Close menu"
             >
               <svg
@@ -61,7 +61,7 @@ function Header() {
           {/* Brand Name */}
           <div className="mb-10 sm:mb-12 md:mb-16">
             <Link to="/" onClick={() => setIsMenuOpen(false)}>
-              <h1 className="text-lg sm:text-xl md:text-2xl font-light text-white uppercase tracking-[0.1em] sm:tracking-[0.15em]">
+              <h1 className="text-lg sm:text-xl md:text-2xl font-light text-gray-900 uppercase tracking-[0.1em] sm:tracking-[0.15em]" style={{ fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif", color: '#344233' }}>
                 SAHAR CAMP
               </h1>
             </Link>
@@ -72,18 +72,20 @@ function Header() {
             <Link
               to="/"
               onClick={() => setIsMenuOpen(false)}
-              className="text-white uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-300 transition-colors py-1 ml-4 sm:ml-7"
+              className="text-gray-900 uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-600 transition-colors py-1 ml-4 sm:ml-7"
+              style={{ fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif", color: '#344233' }}
             >
               About Us
             </Link>
             <Link
               to="/experiences"
               onClick={() => setIsMenuOpen(false)}
-              className="text-white uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-300 transition-colors py-1 flex items-center group"
+              className="text-gray-900 uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-600 transition-colors py-1 flex items-center group"
+              style={{ fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif", color: '#344233' }}
             >
               {(location.pathname === '/experiences' || location.pathname.startsWith('/experience/')) && (
                 <svg
-                  className="w-3 h-3 sm:w-4 sm:h-4 mr-2 sm:mr-3 flex-shrink-0"
+                  className="w-3 h-3 sm:w-4 sm:h-4 mr-2 sm:mr-3 flex-shrink-0 text-gray-900"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -94,19 +96,21 @@ function Header() {
                   <path d="M9 5l7 7-7 7" />
                 </svg>
               )}
-              <span className={!(location.pathname === '/experiences' || location.pathname.startsWith('/experience/')) ? 'ml-4 sm:ml-7' : ''}>Our Experiences</span>
+              <span className={!(location.pathname === '/experiences' || location.pathname.startsWith('/experience/')) ? 'ml-4 sm:ml-7' : ''} style={{ fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif", color: '#344233' }}>Our Experiences</span>
             </Link>
             <Link
-              to="/"
+              to="/join"
               onClick={() => setIsMenuOpen(false)}
-              className="text-white uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-300 transition-colors py-1 ml-4 sm:ml-7"
+              className="text-gray-900 uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-600 transition-colors py-1 ml-4 sm:ml-7"
+              style={{ fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif", color: '#344233' }}
             >
               Join Us
             </Link>
             <Link
               to="/"
               onClick={() => setIsMenuOpen(false)}
-              className="text-white uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-300 transition-colors py-1 ml-4 sm:ml-7"
+              className="text-gray-900 uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-600 transition-colors py-1 ml-4 sm:ml-7"
+              style={{ fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif", color: '#344233' }}
             >
               Journal
             </Link>

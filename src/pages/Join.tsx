@@ -1,77 +1,75 @@
+import { getSaharLogoDark } from '../config/r2-assets'
+
+// Get R2 URLs for logos
+const logoDark = getSaharLogoDark()
+
 function Join() {
   return (
-    <div className="pt-16 sm:pt-20">
-      {/* Hero Section */}
-      <section className="relative min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-light mb-4 sm:mb-6 text-gray-900">Join Us</h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-2">
-            Become part of the Sahar Camp community and stay connected with our latest updates,
-            offers, and experiences.
-          </p>
-        </div>
-      </section>
-
-      {/* Join Form Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto">
-            <form className="space-y-4 sm:space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent text-sm sm:text-base"
-                  placeholder="Enter your full name"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent text-sm sm:text-base"
-                  placeholder="Enter your email address"
-                />
-              </div>
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent text-sm sm:text-base"
-                  placeholder="Enter your phone number"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Message (Optional)
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent text-sm sm:text-base resize-y"
-                  placeholder="Tell us about yourself or what you're interested in"
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full px-6 sm:px-8 py-2.5 sm:py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors font-medium uppercase tracking-wider text-sm sm:text-base"
+    <div>
+      {/* Fixed Header Bar */}
+      <div className="fixed top-0 left-0 right-0 z-30 bg-white border-b border-gray-200 text-gray-900 shadow-sm">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 relative">
+            {/* Hamburger Menu - Left */}
+            <button
+              onClick={() => {
+                const event = new CustomEvent('toggleMenu')
+                window.dispatchEvent(event)
+              }}
+              className="text-gray-900 hover:opacity-70 transition-colors z-10 flex items-center justify-center"
+              aria-label="Toggle menu"
+            >
+              <svg
+                className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                Join Our Community
-              </button>
-            </form>
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+
+            {/* Logo and Title - Centered */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-1.5 sm:space-x-2 md:space-x-3">
+              <img
+                src={logoDark}
+                alt="Sahar Camp Logo"
+                className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto transition-all duration-300"
+              />
+              <h2 className="text-sm sm:text-lg md:text-2xl font-light uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] whitespace-nowrap text-gray-900" style={{ fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif", color: '#344233' }}>
+                SAHAR CAMP
+              </h2>
+            </div>
+
+            {/* Spacer for right alignment */}
+            <div className="w-16 sm:w-20 md:w-24 flex items-center justify-center">
+              <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white pt-14 sm:pt-16 md:pt-20 pb-20 sm:pb-24 md:pb-32">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-light mb-8 sm:mb-10 md:mb-12 text-gray-900">Join Us</h1>
+          
+          {/* Notion Application Section */}
+          <div className="max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-gray-900 leading-relaxed mb-6 sm:mb-8">
+              Become part of Sahar camp 2026 by completing the application via Notion using the link below:
+            </p>
+            <a
+              href="https://unmarred-rail-a64.notion.site/2e91987a90a081e28006f2d146960e63?pvs=105"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors font-medium text-sm sm:text-base break-all"
+            >
+              https://unmarred-rail-a64.notion.site/2e91987a90a081e28006f2d146960e63?pvs=105
+            </a>
           </div>
         </div>
       </section>

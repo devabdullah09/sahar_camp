@@ -58,12 +58,14 @@ function Property() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mt-8 sm:mt-12">
-              <Link
-                to="/book"
+              <a
+                href="https://unmarred-rail-a64.notion.site/2e91987a90a081e28006f2d146960e63"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-6 sm:px-8 py-2.5 sm:py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors font-medium text-sm sm:text-base text-center"
               >
-                Book Now
-              </Link>
+                Join Now
+              </a>
               <Link
                 to="/offers"
                 className="px-6 sm:px-8 py-2.5 sm:py-3 border-2 border-gray-900 text-gray-900 rounded-full hover:bg-gray-900 hover:text-white transition-colors font-medium text-sm sm:text-base text-center"

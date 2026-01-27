@@ -7,8 +7,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Lato', '-apple-system', 'BlinkMacSystemFont', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
-        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+        // STRICT CLIENT REQUIREMENT: ASBURY PARK must be used everywhere
+        sans: ['ASBURY PARK', '-apple-system', 'BlinkMacSystemFont', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        serif: ['ASBURY PARK', 'Georgia', 'serif'],
+        // Set ASBURY PARK as default for all font families
+        default: ['ASBURY PARK', '-apple-system', 'BlinkMacSystemFont', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
       },
       colors: {
         cream: '#F5F2ED',

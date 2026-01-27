@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { experiences } from '../data/experiences'
-import { getR2Url } from '../config/r2-assets'
+import { getSaharLogoWhite, getSaharLogoDark } from '../config/r2-assets'
 
-// Get R2 URLs for logos
-const logoWhite = getR2Url('logo/logo white.png')
-const logoDark = getR2Url('logo/logo.png')
+// Get R2 URLs for logos - using new Sahar logos
+const logoWhite = getSaharLogoWhite()
+const logoDark = getSaharLogoDark()
 
 function Experiences() {
   const heroRef = useRef<HTMLElement>(null)
@@ -86,12 +86,18 @@ function Experiences() {
                 <img
                   src={isHeaderSolid ? logoDark : logoWhite}
                   alt="Sahar Camp Logo"
-                  className="h-6 sm:h-7 md:h-9 w-auto transition-all duration-300"
+                  className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto transition-all duration-300"
+                  style={{ filter: isHeaderSolid ? 'none' : 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8))' }}
                 />
                 <h2
                   className={`text-sm sm:text-lg md:text-2xl font-light uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] whitespace-nowrap transition-colors duration-300 ${
                     isHeaderSolid ? 'text-gray-900' : 'text-white'
                   }`}
+                  style={{ 
+                    fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    textShadow: isHeaderSolid ? 'none' : '0 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5)',
+                    color: isHeaderSolid ? '#344233' : 'white'
+                  }}
                 >
                   SAHAR CAMP
                 </h2>
@@ -108,8 +114,12 @@ function Experiences() {
         {/* Hero Content - Centered */}
         <div className="relative h-full flex flex-col items-center justify-center z-20 px-4 sm:px-6">
           <h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-light text-white mb-6 sm:mb-8 text-center transition-opacity duration-300"
-            style={{ opacity: Math.max(0, 1 - scrollY / 300) }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-6 sm:mb-8 text-center transition-opacity duration-300"
+            style={{ 
+              opacity: Math.max(0, 1 - scrollY / 300),
+              fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              textShadow: '0 2px 8px rgba(0, 0, 0, 0.5)'
+            }}
           >
             Our Experiences
           </h1>
@@ -134,28 +144,21 @@ function Experiences() {
             {experiences.map((experience) => (
               <Link
                 key={experience.id}
-                to={`/experiences/${experience.slug}`}
-                className="relative group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                to={experience.slug === 'sahar-nevada-usa-2026' ? '/join' : `/experiences/${experience.slug}`}
+                className="relative overflow-hidden rounded-lg shadow-md cursor-pointer"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
                     src={experience.image}
                     alt={experience.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover"
                   />
                   {/* Default gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent transition-opacity duration-300 group-hover:opacity-0" />
-                  
-                  {/* Hover overlay with description */}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 sm:p-8 md:p-12">
-                    <p className="text-white text-center text-sm sm:text-base md:text-lg leading-relaxed px-2">
-                      {experience.description}
-                    </p>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
-                  {/* Label at bottom - always visible */}
+                  {/* Label at bottom - always visible with ASBURY PARK font */}
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 lg:p-10 text-center z-10">
-                    <p className="text-white uppercase tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] text-xs sm:text-sm md:text-base font-light opacity-100 group-hover:opacity-70 transition-opacity duration-300">
+                    <p className="text-white uppercase tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] text-xs sm:text-sm md:text-base font-light" style={{ fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
                       {experience.label
                         ? experience.label
                         : `SAHAR CAMP ${experience.title.toUpperCase()}`}

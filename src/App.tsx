@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
+import Loader from './components/Loader'
 import Home from './pages/Home'
 import Property from './pages/Property'
 import Experiences from './pages/Experiences'
@@ -11,20 +12,23 @@ import Join from './pages/Join'
 
 function App() {
   return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/property/:slug" element={<Property />} />
-          <Route path="/experiences" element={<Experiences />} />
-          <Route path="/experiences/:slug" element={<ExperienceDetail />} />
-          <Route path="/offers" element={<Offers />} />
-          <Route path="/journal" element={<Journal />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/join" element={<Join />} />
-        </Routes>
-      </Layout>
-    </Router>
+    <>
+      <Loader />
+      <Router>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/property/:slug" element={<Property />} />
+            <Route path="/experiences" element={<Experiences />} />
+            <Route path="/experiences/:slug" element={<ExperienceDetail />} />
+            <Route path="/offers" element={<Offers />} />
+            <Route path="/journal" element={<Journal />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/join" element={<Join />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </>
   )
 }
 
