@@ -55,7 +55,7 @@ function Join() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white pt-14 sm:pt-16 md:pt-20 pb-20 sm:pb-24 md:pb-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-light mb-8 sm:mb-10 md:mb-12 text-gray-900">Join Us</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-8 sm:mb-10 md:mb-12 text-gray-900">Join Us</h1>
           
           {/* Notion Application Section */}
           <div className="max-w-2xl mx-auto">

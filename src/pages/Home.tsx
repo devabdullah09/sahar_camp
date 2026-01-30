@@ -124,7 +124,7 @@ function Home() {
           </div> */}
 
           {/* Manifesto Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-red-600 mb-12 tracking-wide">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-red-600 mb-12 tracking-wide">
             Manifesto
           </h1>
 
@@ -164,7 +164,7 @@ function Home() {
       {/* Our Homes Section */}
       <section className="py-24 bg-[#f5f0eb]">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12">
-          <h2 className="font-serif text-4xl md:text-5xl text-[#6b5d52] text-center mb-12 sm:mb-16 md:mb-20 font-light tracking-wide">
+          <h2 className="font-serif text-3xl md:text-4xl text-[#6b5d52] text-center mb-12 sm:mb-16 md:mb-20 font-light tracking-wide">
             Our Homes
           </h2>
 
@@ -227,7 +227,7 @@ function Home() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl text-[#6b5d52] mb-6 font-light tracking-wide">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#6b5d52] mb-6 font-light tracking-wide">
               Signature Experiences
             </h2>
             <p className="text-[#8b7d72] text-lg max-w-3xl mx-auto font-light leading-relaxed">
@@ -248,7 +248,7 @@ function Home() {
 
             <div className="flex items-center">
               <div>
-                <h3 className="font-serif text-3xl md:text-4xl text-[#6b5d52] mb-6 font-light">
+                <h3 className="font-serif text-2xl md:text-3xl text-[#6b5d52] mb-6 font-light">
                   {experiences[0]?.title || 'Sahar nevada, USA 2022'}
                 </h3>
                 <p className="text-[#8b7d72] text-base leading-relaxed mb-8 font-light">
@@ -274,7 +274,7 @@ function Home() {
               <div className="inline-block mb-6">
                 <div className="h-px w-16 bg-[#8b7d72] mb-6"></div>
               </div>
-              <h2 className="font-serif text-4xl md:text-5xl text-[#6b5d52] mb-6 font-light">
+              <h2 className="font-serif text-3xl md:text-4xl text-[#6b5d52] mb-6 font-light">
                 {experiences[1]?.label || experiences[1]?.title || 'Sahar nevada, USA 2023'}
               </h2>
               <div className="h-px w-16 bg-[#8b7d72] mb-8"></div>
@@ -334,7 +334,7 @@ function Home() {
             {/* Right Side - Header + Scrollable Stories */}
             <div>
               <div className="mb-12">
-                <h2 className="font-serif text-4xl md:text-5xl text-[#6b5d52] mb-6 font-light tracking-wide">
+                <h2 className="font-serif text-3xl md:text-4xl text-[#6b5d52] mb-6 font-light tracking-wide">
                   OUR STORIES
                 </h2>
                 <p className="text-[#6b5d52] text-lg font-light leading-relaxed">
@@ -386,7 +386,7 @@ function Home() {
             </div>
 
             <div>
-              <h2 className="font-serif text-4xl md:text-5xl text-[#6b5d52] mb-6 font-light">
+              <h2 className="font-serif text-3xl md:text-4xl text-[#6b5d52] mb-6 font-light">
                 GIVING BACK
               </h2>
               <div className="h-px w-16 bg-[#8b7d72] mb-8"></div>
@@ -410,7 +410,7 @@ function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div className="order-2 md:order-1">
-              <h2 className="font-serif text-4xl md:text-5xl text-[#6b5d52] mb-6 font-light">
+              <h2 className="font-serif text-3xl md:text-4xl text-[#6b5d52] mb-6 font-light">
                 OUR SUSTAINABILITY
               </h2>
               <div className="h-px w-16 bg-[#8b7d72] mb-8"></div>

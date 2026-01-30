@@ -30,7 +30,7 @@ function Property() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 lg:p-16 text-white">
           <div className="container mx-auto">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-light mb-2 sm:mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-2 sm:mb-4">
               {property.name} | {property.location}
             </h1>
             <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-white/90">{property.description}</p>

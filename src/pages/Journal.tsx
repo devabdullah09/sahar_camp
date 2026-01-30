@@ -7,7 +7,7 @@ function Journal() {
       {/* Hero Section */}
       <section className="relative min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-light mb-4 sm:mb-6 text-gray-900">Our Stories</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-4 sm:mb-6 text-gray-900">Our Stories</h1>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-2">
             Our stories define us, inspire us and unite us. Every journey is a story worth sharing.
           </p>

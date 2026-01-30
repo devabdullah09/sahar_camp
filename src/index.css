@@ -1,7 +1,7 @@
 /* ASBURY PARK Font - STRICT CLIENT REQUIREMENT */
 @font-face {
   font-family: 'ASBURY PARK';
-  src: url('./assets/fonts/ashbury_.ttf') format('truetype');
+  src: url('./assets/fonts/Jeff Levine - AsburyParkSolidJNL.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: 'ASBURY PARK';
-  src: url('./assets/fonts/ashburyi.ttf') format('truetype');
+  src: url('./assets/fonts/Jeff Levine - AsburyParkSolidJNL.otf') format('opentype');
   font-weight: normal;
   font-style: italic;
   font-display: swap;

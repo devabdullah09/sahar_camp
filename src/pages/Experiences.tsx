@@ -114,7 +114,7 @@ function Experiences() {
         {/* Hero Content - Centered */}
         <div className="relative h-full flex flex-col items-center justify-center z-20 px-4 sm:px-6">
           <h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-6 sm:mb-8 text-center transition-opacity duration-300"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 text-center transition-opacity duration-300"
             style={{ 
               opacity: Math.max(0, 1 - scrollY / 300),
               fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif",

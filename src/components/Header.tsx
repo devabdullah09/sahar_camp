@@ -70,7 +70,7 @@ function Header() {
           {/* Navigation Links */}
           <nav className="flex flex-col space-y-4 sm:space-y-5 md:space-y-6">
             <Link
-              to="/"
+              to="/about"
               onClick={() => setIsMenuOpen(false)}
               className="text-gray-900 uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-600 transition-colors py-1 ml-4 sm:ml-7"
               style={{ fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif", color: '#344233' }}
@@ -107,7 +107,7 @@ function Header() {
               Join Us
             </Link>
             <Link
-              to="/"
+              to="/journal"
               onClick={() => setIsMenuOpen(false)}
               className="text-gray-900 uppercase tracking-[0.1em] text-sm sm:text-base md:text-lg font-light hover:text-gray-600 transition-colors py-1 ml-4 sm:ml-7"
               style={{ fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif", color: '#344233' }}
