@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { experiences } from '../data/experiences'
 import { getSaharLogoWhite, getSaharLogoDark } from '../config/r2-assets'
 
@@ -11,6 +11,7 @@ function ExperienceDetail() {
   const { slug } = useParams<{ slug: string }>()
   const experience = experiences.find((exp) => exp.slug === slug)
   const [isHeaderSolid, setIsHeaderSolid] = useState(false)
+  const sectionRefs = useRef<{ [key: number]: { image: HTMLDivElement | null, text: HTMLDivElement | null } }>({})
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +24,33 @@ function ExperienceDetail() {
 
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    const matchHeights = () => {
+      Object.keys(sectionRefs.current).forEach((key) => {
+        const index = parseInt(key)
+        const refs = sectionRefs.current[index]
+        if (refs?.image && refs?.text && window.innerWidth >= 768) {
+          // Match image height to text height (like Home page)
+          const textHeight = refs.text.offsetHeight
+          if (textHeight > 0) {
+            refs.image.style.height = `${textHeight}px`
+          }
+        } else if (refs?.image) {
+          refs.image.style.height = 'auto'
+        }
+      })
+    }
+
+    matchHeights()
+    const timer = setTimeout(matchHeights, 100)
+    window.addEventListener('resize', matchHeights)
+    
+    return () => {
+      clearTimeout(timer)
+      window.removeEventListener('resize', matchHeights)
+    }
+  }, [experience])
 
   // Redirect 2026 experience to join page
   if (slug === 'sahar-nevada-usa-2026') {
@@ -129,21 +157,6 @@ function ExperienceDetail() {
       {/* Content Section */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-6xl">
-          {/* Centered Heading - Subtitle */}
-          {experience.fullDescription?.subtitle && (
-            <div className="text-center mb-12 sm:mb-16 md:mb-20">
-              <h2 
-                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed max-w-4xl mx-auto px-2"
-                style={{ 
-                  fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif", 
-                  color: '#344233'
-                }}
-              >
-                {experience.fullDescription.subtitle}
-              </h2>
-            </div>
-          )}
-
           {/* Alternating Image and Text Sections */}
           {experience.images &&
             experience.fullDescription?.sections &&
@@ -154,6 +167,7 @@ function ExperienceDetail() {
               const isImageLeft = index % 2 === 0
               const isManifesto = section.title?.toLowerCase() === 'camp manifesto'
               const is2025Manifesto = isManifesto && experience.slug === 'sahar-nevada-usa-2025'
+              const isFirstSection = index === 0
               
               // Check if previous section used two images (for 2025 manifesto)
               const prevSection = index > 0 ? experience.fullDescription?.sections?.[index - 1] : null
@@ -169,21 +183,29 @@ function ExperienceDetail() {
               return (
                 <div
                   key={index}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center mb-12 sm:mb-16 md:mb-20"
+                  className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 mb-8 sm:mb-10 md:mb-12 md:items-start"
                 >
                   {/* Image(s) */}
-                  <div className={`${isImageLeft ? 'order-1 md:order-1' : 'order-1 md:order-2'}`}>
+                  <div 
+                    ref={(el) => {
+                      if (!sectionRefs.current[index]) {
+                        sectionRefs.current[index] = { image: null, text: null }
+                      }
+                      sectionRefs.current[index].image = el
+                    }}
+                    className={`${isImageLeft ? 'order-1 md:order-1' : 'order-1 md:order-2'} w-full`}
+                  >
                     {is2025Manifesto && secondImage ? (
-                      // Two images stacked vertically for 2025 manifesto
-                      <div className="space-y-4 sm:space-y-6">
-                        <div className="aspect-square overflow-hidden rounded-lg">
+                      // Two images stacked vertically for 2025 manifesto - no extra space
+                      <div className="h-full flex flex-col">
+                        <div className="flex-1 overflow-hidden rounded-lg">
                           <img
                             src={img}
                             alt={section.title || `${experience.title} image ${index + 1}`}
                             className="w-full h-full object-cover"
                           />
                         </div>
-                        <div className="aspect-square overflow-hidden rounded-lg">
+                        <div className="flex-1 overflow-hidden rounded-lg">
                           <img
                             src={secondImage}
                             alt={`${section.title || experience.title} image ${index + 2}`}
@@ -192,8 +214,8 @@ function ExperienceDetail() {
                         </div>
                       </div>
                     ) : (
-                      // Single image for other sections
-                      <div className="aspect-square overflow-hidden rounded-lg">
+                      // Single image for other sections - match text height
+                      <div className="w-full h-full overflow-hidden rounded-lg">
                         <img
                           src={img}
                           alt={section.title || `${experience.title} image ${index + 1}`}
@@ -204,63 +226,85 @@ function ExperienceDetail() {
                   </div>
 
                   {/* Text Content */}
-                  <div className={`${isImageLeft ? 'order-2 md:order-2' : 'order-2 md:order-1'} px-2 sm:px-0`}>
-                    {section.title && (
-                      <h3 
-                        className="text-lg sm:text-xl md:text-2xl font-light text-gray-900 mb-3 sm:mb-4 uppercase tracking-[0.1em] sm:tracking-[0.15em]"
-                        style={{ fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif", color: '#344233' }}
-                      >
-                        {section.title}
-                      </h3>
-                    )}
-                    {isManifesto ? (
-                      <div className="text-sm sm:text-base text-gray-700 leading-relaxed font-light">
-                        {section.content
-                          .split(/\n\s*\n/)
-                          .filter(p => p.trim())
-                          .map((paragraph, idx) => {
-                            const lines = paragraph.split('\n').filter(line => line.trim())
-                            return (
-                              <p key={idx} className={idx > 0 ? 'mt-6' : ''}>
-                                {lines.map((line, lineIdx) => (
-                                  <span key={lineIdx}>
-                                    {line.trim()}
-                                    {lineIdx < lines.length - 1 && <br />}
-                                  </span>
-                                ))}
-                              </p>
-                            )
-                          })}
-                      </div>
-                    ) : section.title === '' ? (
-                      // Details section - format with proper labels and spacing
-                      <div className="text-sm sm:text-base text-gray-700 leading-relaxed font-light">
-                        {section.content.split('\n\n').map((detail, idx) => {
-                          const trimmedDetail = detail.trim()
-                          if (!trimmedDetail) return null
-                          const parts = trimmedDetail.split(':')
-                          if (parts.length >= 2) {
-                            const label = parts[0].trim()
-                            const value = parts.slice(1).join(':').trim()
+                  <div 
+                    ref={(el) => {
+                      if (!sectionRefs.current[index]) {
+                        sectionRefs.current[index] = { image: null, text: null }
+                      }
+                      sectionRefs.current[index].text = el
+                    }}
+                    className={`${isImageLeft ? 'order-2 md:order-2' : 'order-2 md:order-1'} flex flex-col`}
+                  >
+                    <div>
+                      {/* Show subtitle heading in first section's text area */}
+                      {isFirstSection && experience.fullDescription?.subtitle && (
+                        <h2 
+                          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed mb-4 sm:mb-6"
+                          style={{ 
+                            fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif", 
+                            color: '#344233'
+                          }}
+                        >
+                          {experience.fullDescription.subtitle}
+                        </h2>
+                      )}
+                      {section.title && (
+                        <h3 
+                          className="text-lg sm:text-xl md:text-2xl font-light text-gray-900 mb-3 sm:mb-4 uppercase tracking-[0.1em] sm:tracking-[0.15em]"
+                          style={{ fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif", color: '#344233' }}
+                        >
+                          {section.title}
+                        </h3>
+                      )}
+                      {isManifesto ? (
+                        <div className="text-sm sm:text-base text-gray-700 leading-relaxed font-light">
+                          {section.content
+                            .split(/\n\s*\n/)
+                            .filter(p => p.trim())
+                            .map((paragraph, idx) => {
+                              const lines = paragraph.split('\n').filter(line => line.trim())
+                              return (
+                                <p key={idx} className={idx > 0 ? 'mt-6' : ''}>
+                                  {lines.map((line, lineIdx) => (
+                                    <span key={lineIdx}>
+                                      {line.trim()}
+                                      {lineIdx < lines.length - 1 && <br />}
+                                    </span>
+                                  ))}
+                                </p>
+                              )
+                            })}
+                        </div>
+                      ) : section.title === '' ? (
+                        // Details section - format with proper labels and spacing
+                        <div className="text-sm sm:text-base text-gray-700 leading-relaxed font-light">
+                          {section.content.split('\n\n').map((detail, idx) => {
+                            const trimmedDetail = detail.trim()
+                            if (!trimmedDetail) return null
+                            const parts = trimmedDetail.split(':')
+                            if (parts.length >= 2) {
+                              const label = parts[0].trim()
+                              const value = parts.slice(1).join(':').trim()
+                              return (
+                                <div key={idx} className={idx > 0 ? 'mt-6' : ''}>
+                                  <span className="font-semibold">{label}:</span>{' '}
+                                  <span>{value}</span>
+                                </div>
+                              )
+                            }
                             return (
                               <div key={idx} className={idx > 0 ? 'mt-6' : ''}>
-                                <span className="font-semibold">{label}:</span>{' '}
-                                <span>{value}</span>
+                                {trimmedDetail}
                               </div>
                             )
-                          }
-                          return (
-                            <div key={idx} className={idx > 0 ? 'mt-6' : ''}>
-                              {trimmedDetail}
-                            </div>
-                          )
-                        })}
-                      </div>
-                    ) : (
-                      <p className="text-sm sm:text-base text-gray-700 leading-relaxed font-light">
-                        {section.content}
-                      </p>
-                    )}
+                          })}
+                        </div>
+                      ) : (
+                        <p className="text-sm sm:text-base text-gray-700 leading-relaxed font-light">
+                          {section.content}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </div>
               )
@@ -269,7 +313,7 @@ function ExperienceDetail() {
           {/* Bottom Landscape Image or Video */}
           {/* For 2023, show video here if it exists, otherwise show bottomVideo or bottomImage */}
           {(experience.slug === 'sahar-nevada-usa-2023' && experience.video) ? (
-            <div className="mt-12 sm:mt-16">
+            <div className="mt-8 sm:mt-10">
               <video
                 autoPlay
                 loop
@@ -281,7 +325,7 @@ function ExperienceDetail() {
               </video>
             </div>
           ) : experience.bottomVideo ? (
-            <div className="mt-12 sm:mt-16">
+            <div className="mt-8 sm:mt-10">
               <video
                 autoPlay
                 loop
@@ -293,7 +337,7 @@ function ExperienceDetail() {
               </video>
             </div>
           ) : experience.bottomImage ? (
-            <div className="mt-12 sm:mt-16">
+            <div className="mt-8 sm:mt-10">
               <img
                 src={experience.bottomImage}
                 alt={`${experience.title} gallery`}
@@ -304,7 +348,7 @@ function ExperienceDetail() {
 
           {/* Gallery Section */}
           {experience.galleryImages && experience.galleryImages.length > 0 && (
-            <div className="mt-16 sm:mt-20 md:mt-24">
+            <div className="mt-8 sm:mt-10 md:mt-12">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 mb-8 sm:mb-12 text-center uppercase tracking-[0.1em] sm:tracking-[0.15em]">
                 Gallery
               </h2>
@@ -322,6 +366,45 @@ function ExperienceDetail() {
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
                   </div>
                 ))}
+              </div>
+            </div>
+          )}
+
+          {/* Other Experiences Section */}
+          {experiences.filter(exp => exp.slug !== experience.slug && exp.slug !== 'sahar-nevada-usa-2026').length > 0 && (
+            <div className="mt-16 sm:mt-20 md:mt-24 pt-12 sm:pt-16 md:pt-20 border-t border-gray-200">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 mb-8 sm:mb-12 text-center uppercase tracking-[0.1em] sm:tracking-[0.15em]">
+                Other Experiences
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-16">
+                {experiences
+                  .filter(exp => exp.slug !== experience.slug && exp.slug !== 'sahar-nevada-usa-2026')
+                  .map((otherExp) => (
+                    <Link
+                      key={otherExp.id}
+                      to={`/experiences/${otherExp.slug}`}
+                      className="relative overflow-hidden rounded-lg shadow-md cursor-pointer group"
+                    >
+                      <div className="relative aspect-[4/3] overflow-hidden">
+                        <img
+                          src={otherExp.image}
+                          alt={otherExp.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        {/* Gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+
+                        {/* Label at bottom */}
+                        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 lg:p-10 text-center z-10">
+                          <p className="text-white uppercase tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] text-xs sm:text-sm md:text-base font-light" style={{ fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
+                            {otherExp.label
+                              ? otherExp.label
+                              : `SAHAR CAMP ${otherExp.title.toUpperCase()}`}
+                          </p>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
               </div>
             </div>
           )}

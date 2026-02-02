@@ -129,13 +129,13 @@ function Experiences() {
       {/* Content Section */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-gray-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-[1400px]">
-          {/* Description Paragraph */}
+          {/* Description Section */}
           <div className="text-center mb-12 sm:mb-16 md:mb-20 lg:mb-24">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 mb-4 sm:mb-6" style={{ fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif", color: '#344233' }}>
+              Sahar camp
+            </h2>
             <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto px-2">
-              Music, wellness, adventure, culture, food and learning are the pillars of the Sahar Camp
-              experience, creating magical worlds where strangers become friends and friends become family.
-              Get a glimpse into the diverse experiences available at our global destinations, reflecting
-              our unique ethos and the beauty of each location.
+              Sahar Camp is a African-rooted camp at Burning Man, created as a living community and desert home in Black Rock City.
             </p>
           </div>
 

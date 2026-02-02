@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { experiences } from '../data/experiences'
 import { getR2Url } from '../config/r2-assets'
@@ -10,6 +10,8 @@ const logoDark = getSaharLogoDark()
 
 function Home() {
   const [isHeaderTransparent, setIsHeaderTransparent] = useState(false)
+  const textRef = useRef<HTMLDivElement>(null)
+  const imageRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +24,21 @@ function Home() {
     handleScroll()
 
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const matchHeights = () => {
+      if (textRef.current && imageRef.current && window.innerWidth >= 768) {
+        const textHeight = textRef.current.offsetHeight
+        imageRef.current.style.height = `${textHeight}px`
+      } else if (imageRef.current) {
+        imageRef.current.style.height = 'auto'
+      }
+    }
+
+    matchHeights()
+    window.addEventListener('resize', matchHeights)
+    return () => window.removeEventListener('resize', matchHeights)
   }, [])
 
   const headerBgClass = isHeaderTransparent 
@@ -165,7 +182,7 @@ function Home() {
       <section className="py-24 bg-[#f5f0eb]">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12">
           <h2 className="font-serif text-3xl md:text-4xl text-[#6b5d52] text-center mb-12 sm:mb-16 md:mb-20 font-light tracking-wide">
-            Our Homes
+            Our Experiences
           </h2>
 
           {/* Experiences Grid - 2 Columns */}
@@ -200,17 +217,15 @@ function Home() {
         </div>
       </section>
 
-      {/* Video Section - Our Story */}
-      <section className="py-24 bg-[#f5f0eb]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <div className="inline-block">
-              <p className="text-xs uppercase tracking-[0.25em] text-[#8b7d72] mb-4 font-medium">
-                — OUR STORY —
-              </p>
-            </div>
-          </div>
-          <div className="relative aspect-video max-w-5xl mx-auto rounded-lg overflow-hidden shadow-2xl">
+      {/* Our Story Section - Magazine Style */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+         
+
+          {/* About Sahar Content with Magazine Layout */}
+          <div className="max-w-5xl mx-auto">
+            {/* Opening Image - Full Width */}
+            <div className="mb-12 sm:mb-16">
             <video
               controls
               playsInline
@@ -219,224 +234,98 @@ function Home() {
             >
               <source src={landingVideo} type="video/mp4" />
             </video>
-          </div>
-        </div>
-      </section>
+            </div>
 
-      {/* Signature Experiences Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl text-[#6b5d52] mb-6 font-light tracking-wide">
-              Signature Experiences
-            </h2>
-            <p className="text-[#8b7d72] text-lg max-w-3xl mx-auto font-light leading-relaxed">
-              Our brand experiences reflect our unique ethos, pillars and programming, showcasing
-              the best of what our homes have to offer.
-            </p>
-          </div>
+            {/* Opening Paragraph - Large Text */}
+            <div className="mb-12 sm:mb-16">
+              <p className="text-xl sm:text-2xl md:text-3xl text-[#1a1a1a] leading-relaxed font-light text-center italic max-w-4xl mx-auto">
+                Sahar was born from a simple question: how can an ephemeral city create deeper belonging than permanent ones?
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-5xl mx-auto mt-20">
-            {/* Experience 1 - with image */}
-            <div className="relative">
+            {/* Two Column Layout with Image */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-16 md:items-start">
+              <div ref={textRef} className="space-y-6">
+                <p className="text-base sm:text-lg text-[#1a1a1a] leading-relaxed font-light">
+                  Inspired by the cultural dynamics of Black Rock City, Sahar explores how collective building, participation, and shared responsibility can transform strangers into a community in just a short time.
+                </p>
+                <p className="text-base sm:text-lg text-[#1a1a1a] leading-relaxed font-light">
+                  Created as a bridge between global nomadic cultures and African roots, Sahar brings Morocco and Africa into this ephemeral experiment, not as an aesthetic reference, but as a living cultural presence.
+                </p>
+              </div>
+              <div ref={imageRef} className="w-full overflow-hidden rounded-lg shadow-md">
+                <img
+                  src={getR2Url('OUR EXPERIENCES/nevda-2023/pictures/088A2547.jpg')}
+                  alt="Sahar Camp Experience"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Full Width Image */}
+            <div className="mb-12 sm:mb-16">
               <img
-                src={experiences[0]?.image || getR2Url('OUR EXPERIENCES/1. Nevada, USA/Pictures/Selection/088A2970.jpg')}
-                alt="Experience"
-                className="w-full aspect-[4/5] object-cover rounded-lg shadow-lg"
+                src={getR2Url('OUR EXPERIENCES/nevda-2023/pictures/088A2803.jpg')}
+                alt="Sahar Camp Gathering"
+                className="w-full h-auto object-cover rounded-lg shadow-lg"
               />
             </div>
 
-            <div className="flex items-center">
+            {/* Centered Text Block */}
+            <div className="mb-12 sm:mb-16 space-y-6">
+              <p className="text-base sm:text-lg text-[#1a1a1a] leading-relaxed font-light text-center">
+                At its core, Sahar is a hub where people from many nationalities come together to co-create, connect, and belong. Architecture, art, music, ritual, and daily life intertwine, inviting participants to unplug from systems and re-plug into something deeply human.
+              </p>
+            </div>
+
+            {/* Three Column Image Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">
               <div>
-                <h3 className="font-serif text-2xl md:text-3xl text-[#6b5d52] mb-6 font-light">
-                  {experiences[0]?.title || 'Sahar nevada, USA 2022'}
-                </h3>
-                <p className="text-[#8b7d72] text-base leading-relaxed mb-8 font-light">
-                  {experiences[0]?.description || 'From music festivals in the desert to wellness retreats in the mountains, our experiences are designed to connect you with the essence of each destination and create lasting memories with our global community.'}
-                </p>
-                <Link
-                  to="/experiences"
-                  className="inline-block text-[#6b5d52] font-medium uppercase tracking-[0.2em] text-sm border-b border-[#6b5d52] pb-1 hover:pb-2 transition-all"
-                >
-                  Discover More
-                </Link>
+                <img
+                  src={getR2Url('OUR EXPERIENCES/nevda-2023/pictures/088A2470.jpg')}
+                  alt="Sahar Camp"
+                  className="w-full h-auto object-cover rounded-lg shadow-md aspect-[3/4]"
+                />
+              </div>
+              <div>
+                <img
+                  src={getR2Url('OUR EXPERIENCES/nevda-2023/pictures/088A2557.jpg')}
+                  alt="Sahar Camp"
+                  className="w-full h-auto object-cover rounded-lg shadow-md aspect-[3/4]"
+                />
+              </div>
+              <div>
+                <img
+                  src={getR2Url('OUR EXPERIENCES/nevda-2023/pictures/088A2638.jpg')}
+                  alt="Sahar Camp"
+                  className="w-full h-auto object-cover rounded-lg shadow-md aspect-[3/4]"
+                />
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Second Experience Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1">
-              <div className="inline-block mb-6">
-                <div className="h-px w-16 bg-[#8b7d72] mb-6"></div>
-              </div>
-              <h2 className="font-serif text-3xl md:text-4xl text-[#6b5d52] mb-6 font-light">
-                {experiences[1]?.label || experiences[1]?.title || 'Sahar nevada, USA 2023'}
-              </h2>
-              <div className="h-px w-16 bg-[#8b7d72] mb-8"></div>
-              <p className="text-[#8b7d72] text-lg leading-relaxed mb-8 font-light">
-                {experiences[1]?.description || 'An unforgettable evening celebrating culture, cuisine and community in the heart of Mexico.'}
+            {/* Closing Paragraphs */}
+            <div className="space-y-6 mb-12 sm:mb-16">
+              <p className="text-base sm:text-lg text-[#1a1a1a] leading-relaxed font-light">
+                Since 2022, Sahar has welcomed over 140 members across multiple editions, with many returning year after year. What sustains Sahar is not scale, but continuity—a shared home in movement.
               </p>
-              <Link
-                to={`/experiences/${experiences[1]?.slug || 'sahar-nevada-usa-2023'}`}
-                className="inline-block text-[#6b5d52] font-medium uppercase tracking-[0.2em] text-sm border-b border-[#6b5d52] pb-1 hover:pb-2 transition-all"
-              >
-                Discover More
-              </Link>
+              <p className="text-base sm:text-lg text-[#1a1a1a] leading-relaxed font-light">
+                More than a camp, Sahar is a living community, shaped by global nomadism and rooted in African soil, proving that temporary spaces can create lasting impact.
+              </p>
             </div>
 
-            <div className="order-1 md:order-2">
+            {/* Final Large Image */}
+            <div className="mb-12 sm:mb-16">
               <img
-                src={experiences[1]?.image || getR2Url('OUR EXPERIENCES/2. Ethos, Mexico/Pictures/f5d74a18-260f-40b8-8336-029fba6642e0.jpg')}
-                alt="Second Experience"
-                className="w-full aspect-[4/5] object-cover rounded-lg shadow-lg"
+                src={getR2Url('OUR EXPERIENCES/nevda-2023/pictures/088A3055.jpg')}
+                alt="Sahar Camp Community"
+                className="w-full h-auto object-cover rounded-lg shadow-lg"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Our Stories Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Left Side - Featured Story (Fixed) */}
-            <div className="lg:sticky lg:top-32 lg:self-start">
-              {experiences[0] && (
-                <Link
-                  to={experiences[0].slug === 'sahar-nevada-usa-2026' ? '/join' : `/experiences/${experiences[0].slug}`}
-                  className="group block"
-                >
-                  <div className="aspect-[4/5] overflow-hidden rounded-lg mb-6">
-                    <img
-                      src={experiences[0].image}
-                      alt={experiences[0].title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <h3 className="font-sans text-xs uppercase tracking-[0.2em] text-[#6b5d52] mb-3 font-medium">
-                    {experiences[0].label || experiences[0].title}
-                  </h3>
-                  <p className="text-[#8b7d72] text-sm mb-4 font-light">
-                    By Sahar Camp Team
-                  </p>
-                  <p className="text-[#6b5d52] text-base leading-relaxed font-light">
-                    {experiences[0].description}
-                  </p>
-                </Link>
-              )}
-            </div>
-
-            {/* Right Side - Header + Scrollable Stories */}
-            <div>
-              <div className="mb-12">
-                <h2 className="font-serif text-3xl md:text-4xl text-[#6b5d52] mb-6 font-light tracking-wide">
-                  OUR STORIES
-                </h2>
-                <p className="text-[#6b5d52] text-lg font-light leading-relaxed">
-                  Our stories define us, inspire us and unite us. Every journey is a story worth sharing.
-                </p>
-              </div>
-
-              <div className="space-y-16">
-                {experiences.slice(1).map((experience) => (
-                  <Link
-                    key={experience.id}
-                    to={experience.slug === 'sahar-nevada-usa-2026' ? '/join' : `/experiences/${experience.slug}`}
-                    className="group block"
-                  >
-                    <div className="aspect-[16/10] overflow-hidden rounded-lg mb-6">
-                      <img
-                        src={experience.image}
-                        alt={experience.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                    </div>
-                    <h3 className="font-sans text-xs uppercase tracking-[0.2em] text-[#6b5d52] mb-3 font-medium">
-                      {experience.label || experience.title}
-                    </h3>
-                    <p className="text-[#8b7d72] text-sm mb-2 font-light">
-                      By Sahar Camp Team
-                    </p>
-                    <p className="text-[#6b5d52] text-base leading-relaxed font-light">
-                      {experience.description}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Giving Back Section */}
-      <section className="py-24 bg-[#f5f0eb]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div>
-              <img
-                src={getR2Url('OUR EXPERIENCES/2. Ethos, Mexico/Pictures/f5d74a18-260f-40b8-8336-029fba6642e0.jpg')}
-                alt="Giving Back"
-                className="w-full aspect-[4/5] object-cover rounded-lg shadow-lg"
-              />
-            </div>
-
-            <div>
-              <h2 className="font-serif text-3xl md:text-4xl text-[#6b5d52] mb-6 font-light">
-                GIVING BACK
-              </h2>
-              <div className="h-px w-16 bg-[#8b7d72] mb-8"></div>
-              <p className="text-[#8b7d72] text-lg leading-relaxed mb-8 font-light">
-                Our Sahar Camp Rise is our global impact initiative focused on strengthening local
-                communities, cultures and conservation efforts.
-              </p>
-              <Link
-                to="/about"
-                className="inline-block text-[#6b5d52] font-medium uppercase tracking-[0.2em] text-sm border-b border-[#6b5d52] pb-1 hover:pb-2 transition-all"
-              >
-                Learn More
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Sustainability Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1">
-              <h2 className="font-serif text-3xl md:text-4xl text-[#6b5d52] mb-6 font-light">
-                OUR SUSTAINABILITY
-              </h2>
-              <div className="h-px w-16 bg-[#8b7d72] mb-8"></div>
-              <p className="text-[#8b7d72] text-lg leading-relaxed mb-8 font-light">
-                Sustainability drives our decision-making; the materials we choose, the way we build,
-                how we operate, and the local and global causes we support. We have one planet and it
-                is our responsibility to protect it.
-              </p>
-              <Link
-                to="/about"
-                className="inline-block text-[#6b5d52] font-medium uppercase tracking-[0.2em] text-sm border-b border-[#6b5d52] pb-1 hover:pb-2 transition-all"
-              >
-                Learn More
-              </Link>
-            </div>
-
-            <div className="order-1 md:order-2">
-              <img
-                src={getR2Url('OUR EXPERIENCES/6. Nevada, USA/Picture Sahar 22/DSC06355.jpg')}
-                alt="Sustainability"
-                className="w-full aspect-[4/5] object-cover rounded-lg shadow-lg"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+  
     </div>
   )
 }
