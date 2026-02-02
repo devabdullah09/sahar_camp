@@ -72,15 +72,15 @@ function Home() {
 
         {/* Header Bar - White initially, transparent on scroll */}
         <div className={`fixed top-0 left-0 right-0 z-30 ${headerBgClass} transition-all duration-300`}>
-          <div className="w-full px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 relative">
+          <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8 max-w-full">
+            <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 relative gap-2 min-w-0">
               {/* Hamburger Menu - Left */}
               <button
                 onClick={() => {
                   const event = new CustomEvent('toggleMenu')
                   window.dispatchEvent(event)
                 }}
-                className={`${iconColor} hover:opacity-70 transition-colors z-10`}
+                className={`flex-shrink-0 ${iconColor} hover:opacity-70 transition-colors z-10 p-1`}
                 aria-label="Toggle menu"
               >
                 <svg
@@ -96,23 +96,25 @@ function Home() {
                 </svg>
               </button>
 
-              {/* Logo and Title - Centered */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-1.5 sm:space-x-2 md:space-x-3">
-                <img
-                  src={logoSrc}
-                  alt="Sahar Camp Logo"
-                  className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto transition-all duration-300"
-                  style={{ filter: logoFilter }}
-                />
-                <h1 className={`text-sm sm:text-lg md:text-2xl font-light ${textColor} uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] whitespace-nowrap transition-all duration-300`} style={{ fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif", textShadow: textShadow, color: isHeaderTransparent ? 'white' : '#344233' }}>
-                  SAHAR CAMP
-                </h1>
+              {/* Logo and Title - Centered, shrinks on small screens */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center pointer-events-none max-w-[calc(100%-9rem)] sm:max-w-none">
+                <div className="flex items-center space-x-1 sm:space-x-1.5 md:space-x-2 lg:space-x-3 min-w-0">
+                  <img
+                    src={logoSrc}
+                    alt="Sahar Camp Logo"
+                    className="h-8 w-auto sm:h-12 md:h-14 lg:h-16 xl:h-20 flex-shrink-0 transition-all duration-300"
+                    style={{ filter: logoFilter }}
+                  />
+                  <h1 className={`text-[10px] sm:text-sm md:text-lg lg:text-2xl font-light ${textColor} uppercase tracking-[0.05em] sm:tracking-[0.1em] md:tracking-[0.15em] lg:tracking-[0.2em] whitespace-nowrap truncate transition-all duration-300`} style={{ fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif", textShadow: textShadow, color: isHeaderTransparent ? 'white' : '#344233' }}>
+                    SAHAR CAMP
+                  </h1>
+                </div>
               </div>
 
-              {/* Book Button - Right */}
+              {/* Join Button - Right, reserved space so it never gets cut off */}
               <Link
                 to="/join"
-                className={`px-3 sm:px-5 md:px-7 py-1.5 sm:py-2 md:py-2.5 rounded-full hover:bg-gray-50 transition-all font-medium uppercase tracking-wider text-[10px] sm:text-xs md:text-sm z-10 ${
+                className={`flex-shrink-0 px-2.5 py-1.5 sm:px-4 md:px-5 lg:px-7 rounded-full hover:bg-gray-50 transition-all font-medium uppercase tracking-wider text-[10px] sm:text-xs md:text-sm z-10 whitespace-nowrap min-h-[36px] sm:min-h-[40px] flex items-center justify-center ${
                   isHeaderTransparent 
                     ? 'bg-white text-gray-900 hover:bg-gray-50' 
                     : 'bg-gray-900 text-white hover:bg-gray-800'
@@ -129,7 +131,7 @@ function Home() {
       </section>
 
       {/* Manifesto Section */}
-      <section className="relative min-h-screen bg-white flex items-center justify-center py-32 px-6">
+      <section className="relative min-h-screen bg-white flex items-center justify-center py-16 sm:py-24 md:py-32 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto text-center">
           {/* Loader Logo on top */}
           {/* <div className="flex justify-center mb-8">
@@ -141,12 +143,12 @@ function Home() {
           </div> */}
 
           {/* Manifesto Heading */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-red-600 mb-12 tracking-wide">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-red-600 mb-8 sm:mb-10 md:mb-12 tracking-wide">
             Manifesto
           </h1>
 
           {/* Manifesto Text */}
-          <div className="space-y-6 text-[#1a1a1a] text-base md:text-lg leading-relaxed max-w-3xl mx-auto font-light">
+          <div className="space-y-4 sm:space-y-6 text-[#1a1a1a] text-sm sm:text-base md:text-lg leading-relaxed max-w-3xl mx-auto font-light px-1">
             <p>
               Morocco is a tree whose roots go deep into Africa yet breathes through its leaves in the world.
             </p>
@@ -179,9 +181,9 @@ function Home() {
       </section>
 
       {/* Our Homes Section */}
-      <section className="py-24 bg-[#f5f0eb]">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[#f5f0eb]">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12">
-          <h2 className="font-serif text-3xl md:text-4xl text-[#6b5d52] text-center mb-12 sm:mb-16 md:mb-20 font-light tracking-wide">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#6b5d52] text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20 font-light tracking-wide">
             Our Experiences
           </h2>
 
@@ -218,14 +220,14 @@ function Home() {
       </section>
 
       {/* Our Story Section - Magazine Style */}
-      <section className="py-24 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
          
 
           {/* About Sahar Content with Magazine Layout */}
           <div className="max-w-5xl mx-auto">
             {/* Opening Image - Full Width */}
-            <div className="mb-12 sm:mb-16">
+            <div className="mb-8 sm:mb-12 md:mb-16">
             <video
               controls
               playsInline
@@ -244,16 +246,16 @@ function Home() {
             </div>
 
             {/* Two Column Layout with Image */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-16 md:items-start">
-              <div ref={textRef} className="space-y-6">
-                <p className="text-base sm:text-lg text-[#1a1a1a] leading-relaxed font-light">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 mb-8 sm:mb-12 md:mb-16 md:items-start">
+              <div ref={textRef} className="space-y-4 sm:space-y-6">
+                <p className="text-sm sm:text-base md:text-lg text-[#1a1a1a] leading-relaxed font-light">
                   Inspired by the cultural dynamics of Black Rock City, Sahar explores how collective building, participation, and shared responsibility can transform strangers into a community in just a short time.
                 </p>
-                <p className="text-base sm:text-lg text-[#1a1a1a] leading-relaxed font-light">
+                <p className="text-sm sm:text-base md:text-lg text-[#1a1a1a] leading-relaxed font-light">
                   Created as a bridge between global nomadic cultures and African roots, Sahar brings Morocco and Africa into this ephemeral experiment, not as an aesthetic reference, but as a living cultural presence.
                 </p>
               </div>
-              <div ref={imageRef} className="w-full overflow-hidden rounded-lg shadow-md">
+              <div ref={imageRef} className="w-full overflow-hidden rounded-lg shadow-md order-first md:order-none">
                 <img
                   src={getR2Url('OUR EXPERIENCES/nevda-2023/pictures/088A2547.jpg')}
                   alt="Sahar Camp Experience"
@@ -263,7 +265,7 @@ function Home() {
             </div>
 
             {/* Full Width Image */}
-            <div className="mb-12 sm:mb-16">
+            <div className="mb-8 sm:mb-12 md:mb-16">
               <img
                 src={getR2Url('OUR EXPERIENCES/nevda-2023/pictures/088A2803.jpg')}
                 alt="Sahar Camp Gathering"
@@ -272,14 +274,14 @@ function Home() {
             </div>
 
             {/* Centered Text Block */}
-            <div className="mb-12 sm:mb-16 space-y-6">
-              <p className="text-base sm:text-lg text-[#1a1a1a] leading-relaxed font-light text-center">
+            <div className="mb-8 sm:mb-12 md:mb-16 space-y-4 sm:space-y-6">
+              <p className="text-sm sm:text-base md:text-lg text-[#1a1a1a] leading-relaxed font-light text-center px-2">
                 At its core, Sahar is a hub where people from many nationalities come together to co-create, connect, and belong. Architecture, art, music, ritual, and daily life intertwine, inviting participants to unplug from systems and re-plug into something deeply human.
               </p>
             </div>
 
             {/* Three Column Image Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12 md:mb-16">
               <div>
                 <img
                   src={getR2Url('OUR EXPERIENCES/nevda-2023/pictures/088A2470.jpg')}
@@ -304,17 +306,17 @@ function Home() {
             </div>
 
             {/* Closing Paragraphs */}
-            <div className="space-y-6 mb-12 sm:mb-16">
-              <p className="text-base sm:text-lg text-[#1a1a1a] leading-relaxed font-light">
+            <div className="space-y-4 sm:space-y-6 mb-8 sm:mb-12 md:mb-16">
+              <p className="text-sm sm:text-base md:text-lg text-[#1a1a1a] leading-relaxed font-light">
                 Since 2022, Sahar has welcomed over 140 members across multiple editions, with many returning year after year. What sustains Sahar is not scale, but continuity—a shared home in movement.
               </p>
-              <p className="text-base sm:text-lg text-[#1a1a1a] leading-relaxed font-light">
+              <p className="text-sm sm:text-base md:text-lg text-[#1a1a1a] leading-relaxed font-light">
                 More than a camp, Sahar is a living community, shaped by global nomadism and rooted in African soil, proving that temporary spaces can create lasting impact.
               </p>
             </div>
 
             {/* Final Large Image */}
-            <div className="mb-12 sm:mb-16">
+            <div className="mb-8 sm:mb-12 md:mb-16">
               <img
                 src={getR2Url('OUR EXPERIENCES/nevda-2023/pictures/088A3055.jpg')}
                 alt="Sahar Camp Community"

@@ -79,7 +79,7 @@ function About() {
       </div>
 
       {/* Content Section */}
-      <section className="pt-14 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-20 bg-white">
+      <section className="pt-14 sm:pt-16 md:pt-20 pb-10 sm:pb-14 md:pb-20 bg-white overflow-x-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-6xl">
           {/* Page Heading */}
           {/* <div className="text-center mb-8 sm:mb-10 md:mb-12">
@@ -306,7 +306,7 @@ function About() {
             >
               <div>
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-light mb-4 sm:mb-6 text-gray-900">Artists</h2>
-                <ul className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-700 leading-relaxed font-light">
+                <ul className="space-y-2 sm:space-y-3 md:space-y-4 text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed font-light break-words">
                   <li><strong>Unders</strong> — Netherlands — Deep electronic soundscapes.</li>
                   <li><strong>Share</strong> — Netherlands — Groovy and soulful house music.</li>
                   <li><strong>Amémé</strong> — Benin — Afro-inspired electronic rhythms.</li>
@@ -336,7 +336,7 @@ function About() {
             >
               <div>
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-light mb-4 sm:mb-6 text-gray-900">Partners & Previous Collaborators</h2>
-                <ul className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-700 leading-relaxed font-light">
+                <ul className="space-y-2 sm:space-y-3 md:space-y-4 text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed font-light break-words">
                   <li><strong>The Source Boutique Hotel</strong> — Cultural hosting partner.</li>
                   <li><strong>Jnane Tamsna</strong> — Art-driven hospitality partner.</li>
                   <li><strong>Trésors Mamoun</strong> — Moroccan culinary heritage partner.</li>

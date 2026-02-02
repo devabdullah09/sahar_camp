@@ -53,20 +53,20 @@ function Join() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white pt-14 sm:pt-16 md:pt-20 pb-20 sm:pb-24 md:pb-32">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-8 sm:mb-10 md:mb-12 text-gray-900">Join Us</h1>
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white pt-14 sm:pt-16 md:pt-20 pb-16 sm:pb-20 md:pb-32 px-4">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-2xl">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-6 sm:mb-8 md:mb-12 text-gray-900">Join Us</h1>
           
           {/* Notion Application Section */}
           <div className="max-w-2xl mx-auto">
-            <p className="text-base sm:text-lg md:text-xl text-gray-900 leading-relaxed mb-6 sm:mb-8">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-900 leading-relaxed mb-4 sm:mb-6 md:mb-8 px-2">
               Become part of Sahar camp 2026 by completing the application via Notion using the link below:
             </p>
             <a
               href="https://unmarred-rail-a64.notion.site/2e91987a90a081e28006f2d146960e63?pvs=105"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors font-medium text-sm sm:text-base break-all"
+              className="inline-flex items-center justify-center min-h-[48px] px-4 sm:px-6 md:px-8 py-3 sm:py-3.5 bg-black text-white rounded-full hover:bg-gray-800 transition-colors font-medium text-xs sm:text-sm md:text-base break-all text-left max-w-full"
             >
               https://unmarred-rail-a64.notion.site/2e91987a90a081e28006f2d146960e63?pvs=105
             </a>

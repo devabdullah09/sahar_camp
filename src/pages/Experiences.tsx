@@ -43,7 +43,7 @@ function Experiences() {
       {/* Hero Section with Background Image */}
       <section
         ref={heroRef}
-        className="relative h-[70vh] md:h-[80vh] w-full overflow-hidden"
+        className="relative min-h-[50vh] h-[60vh] sm:h-[70vh] md:h-[80vh] w-full overflow-hidden"
       >
         {/* Background Image */}
         <div className="absolute inset-0">
@@ -112,7 +112,7 @@ function Experiences() {
         </div>
 
         {/* Hero Content - Centered */}
-        <div className="relative h-full flex flex-col items-center justify-center z-20 px-4 sm:px-6">
+        <div className="relative h-full flex flex-col items-center justify-center z-20 px-4 sm:px-6 md:px-8">
           <h1 
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 text-center transition-opacity duration-300"
             style={{ 

@@ -26,7 +26,7 @@ function Header() {
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="flex flex-col h-full p-6 sm:p-8 md:p-12">
+        <div className="flex flex-col h-full p-4 sm:p-6 md:p-8 lg:p-12 overflow-y-auto">
           {/* Header with Logo and Close Button */}
           <div className="flex items-center justify-between mb-12 sm:mb-16 md:mb-20">
             {/* Logo */}
@@ -34,7 +34,7 @@ function Header() {
               <img
                 src={logoDark}
                 alt="Sahar Camp Logo"
-                className="h-16 sm:h-18 md:h-20 w-auto"
+                className="h-14 sm:h-16 md:h-20 w-auto"
               />
             </Link>
 
@@ -59,7 +59,7 @@ function Header() {
           </div>
 
           {/* Brand Name */}
-          <div className="mb-10 sm:mb-12 md:mb-16">
+          <div className="mb-8 sm:mb-10 md:mb-12">
             <Link to="/" onClick={() => setIsMenuOpen(false)}>
               <h1 className="text-lg sm:text-xl md:text-2xl font-light text-gray-900 uppercase tracking-[0.1em] sm:tracking-[0.15em]" style={{ fontFamily: "'ASBURY PARK', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif", color: '#344233' }}>
                 SAHAR CAMP

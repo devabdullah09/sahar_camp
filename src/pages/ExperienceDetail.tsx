@@ -143,7 +143,7 @@ function ExperienceDetail() {
 
       {/* Main Video or Hero Image */}
       {/* For 2023, always show landing image in hero, video goes to bottom */}
-      <section className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
+      <section className="relative w-full min-h-[40vh] h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
         {experience.video && experience.slug !== 'sahar-nevada-usa-2023' ? (
           <video autoPlay loop muted playsInline className="w-full h-full object-cover">
             <source src={experience.video} type="video/mp4" />
@@ -155,7 +155,7 @@ function ExperienceDetail() {
       </section>
 
       {/* Content Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+      <section className="py-10 sm:py-14 md:py-20 lg:py-24 bg-white overflow-x-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-6xl">
           {/* Alternating Image and Text Sections */}
           {experience.images &&
@@ -352,7 +352,7 @@ function ExperienceDetail() {
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 mb-8 sm:mb-12 text-center uppercase tracking-[0.1em] sm:tracking-[0.15em]">
                 Gallery
               </h2>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
                 {experience.galleryImages.map((img, index) => (
                   <div
                     key={index}
